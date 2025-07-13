@@ -166,3 +166,21 @@ a.secondary {
     filter: invert();
   }
 }
+/* styles/globals.css */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+textarea:focus {
+  border-color: #007aff;
+  box-shadow: 0 0 5px #007aff;
+  outline: none;
+}
