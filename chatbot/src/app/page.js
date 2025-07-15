@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import ChatWindow from './components/ChatWindow';
-import InputBox from './components/InputBox';
+import ChatWindow from '../components/ChatWindow';
+import InputBox from '../components/InputBox';
+import styles from './page.module.css';
 
 export default function Home() {
   const [messages, setMessages] = useState([
@@ -35,27 +36,13 @@ export default function Home() {
   };
 
   return (
-    <main style={{
-      maxWidth: '620px',
-      margin: '3rem auto',
-      padding: '0 1.5rem',
-      display: 'flex',
-      flexDirection: 'column',
-      height: '80vh',
-      fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-      color: '#222',
-      backgroundColor: '#fff',
-      borderRadius: '16px',
-      border: '1px solid #ddd',
-      userSelect: 'none',
-    }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '1rem', fontWeight: '700', color: '#005f73' }}>
+    <main className={styles.main_container}>
+      <h1 className={styles.title}>
         Chatbot Minimalista
       </h1>
 
       <div
         ref={chatWindowRef}
-        style={{ flexGrow: 1, overflowY: 'auto' }}
       >
         <ChatWindow messages={messages} />
       </div>
