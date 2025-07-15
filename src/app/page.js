@@ -41,9 +41,12 @@ export default function Home() {
         Chatbot Minimalista
       </h1>
 
-      <div
+      {/* <div
         ref={chatWindowRef}
-      >
+        style={{}}
+      > */}
+        
+      <div className={styles.chat_window} ref={chatWindowRef} style={{ overflowY: 'auto'}}>
         <ChatWindow messages={messages} />
       </div>
 
