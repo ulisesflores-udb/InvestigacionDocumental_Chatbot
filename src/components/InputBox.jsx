@@ -1,14 +1,24 @@
 import { useState } from 'react';
 import styles from '../app/page.module.css';
+import Sugerencias from './Sugerencias';
 
 export default function InputBox({ onSend }) {
   const [text, setText] = useState('');
+  const [mostrar, setMostrar] = useState(true);
 
   const sendMessage = () => {
-    if (!text.trim()) return;
+    if (!text.trim()) { alert(!text.trim()); return };
     onSend(text);
     setText('');
+    setMostrar(false);
   };
+
+  const sendSugerencia = (sugerencia) => {
+    setText(sugerencia);
+    setMostrar(false);
+    onSend(sugerencia);
+    setText('');
+  }
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -20,6 +30,11 @@ export default function InputBox({ onSend }) {
   return (
     <div className={styles.cont_form}>
       <div className={styles.form_items}>
+        <div className={styles.cont_sugerencias + (!mostrar ? ' ' + styles.cont_invisible : '')}>
+          <Sugerencias texto="¿Qué me recomiendas para curar la gripe con tos seca?" send={sendSugerencia}  />
+          <Sugerencias texto="¿Qué me recomiendas para el dolor de estómago?" send={sendSugerencia} />
+          <Sugerencias texto="¿Cómo puedo ser más claro?" send={sendSugerencia} />
+        </div>
         <textarea
           className={styles.form_textarea}
           value={text}
