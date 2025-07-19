@@ -3,7 +3,7 @@ import styles from '../app/page.module.css';
 export default function ChatWindow({ messages }) {
   return (
     <>
-      { messages.map(({ sender, text }, idx) => (
+      { messages.map(({ sender, text, responseTime }, idx) => (
         <div
           className={styles.chatbot}
           key={idx}
@@ -15,6 +15,11 @@ export default function ChatWindow({ messages }) {
           id="chat"
         >
           {text}
+    
+          {
+            sender === 'bot' && responseTime &&
+            <strong>⏱️{responseTime}s</strong>
+          }
         </div>
       ))}
     </>
