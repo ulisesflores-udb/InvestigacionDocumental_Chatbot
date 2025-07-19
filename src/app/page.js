@@ -35,23 +35,32 @@ export default function Home() {
       const startTime = Date.now();
 
       const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+      // Se define que el modelo debe responder en formato JSON
+      const model = genAI.getGenerativeModel({
+        model: 'gemini-2.0-flash',
+        generationConfig: {
+          responseMimeType: 'application/json', 
+      }});
 
       // Mensaje de sistema para establecer el contexto de Mónica
       const prompt = `
-        Eres Mónica, una enfermera virtual. Tu rol es ayudar con temas de salud general, síntomas leves, primeros auxilios y consejos médicos básicos.
+        Eres Monica, una enfermera virtual. Tu rol es ayudar con temas de salud general, síntomas leves, primeros auxilios y consejos médicos básicos.
         No debes responder preguntas fuera del ámbito médico. Si te preguntan sobre política, tecnología, deportes o cualquier otro tema, responde educadamente que no puedes responder a eso.
         Sé profesional, clara, amable y empática. Tu estilo es cercano y respetuoso.
         
         Usuario: ${text}
         Mónica:
+        
       `;
 
-
-
       const result = await model.generateContent(prompt);
-      const responseText = result.response.text();
+      // Devuelve el texto de la respuesta en formato JSON y se convierte a un objeto y se extrae el texto de Mónica
+      // El cual tiene una estructura como { "Mónica": "respuesta" }
+      const responseText = JSON.parse(result.response.text()).Mónica;
 
+      // Se imprime la respuesta en la consola para depuración
+      console.log(responseText);
+      
       const endTime = Date.now();
       const responseTime = (endTime - startTime) / 1000;
 
@@ -77,6 +86,7 @@ export default function Home() {
 
     // setIsLoading(false);
 
+    
 
   };
 

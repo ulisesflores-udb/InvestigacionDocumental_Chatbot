@@ -33,7 +33,7 @@ export default function InputBox({ onSend }) {
         <div className={styles.cont_sugerencias + (!mostrar ? ' ' + styles.cont_invisible : '')}>
           <Sugerencias texto="¿Qué me recomiendas para curar la gripe con tos seca?" send={sendSugerencia}  />
           <Sugerencias texto="¿Qué me recomiendas para el dolor de estómago?" send={sendSugerencia} />
-          <Sugerencias texto="¿Cómo puedo ser más claro?" send={sendSugerencia} />
+          <Sugerencias texto="Tengo fiebre y dolor de garganta, ¿podría ser gripe?" send={sendSugerencia} />
         </div>
         <textarea
           className={styles.form_textarea}
