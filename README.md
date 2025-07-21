@@ -21,11 +21,15 @@ Sigue los pasos a continuación para instalar y ejecutar el chatbot de forma loc
 ### Pasos para ejecutar "
 1- *Clona este repositorio:*
 Link: https://github.com/ulisesflores-udb/InvestigacionDocumental_Chatbot
+
 2- *Clona este repositorio:*
 ```cd carpeta-chatbot```
+
 3- Instala las dependencias:
 ```npm install```
+
 4- Inicia la aplicación:
 ```npm run dev```
+
 5- Accede en el navegador:
 Ingresa a esta url para ver el proyecto: http://localhost:3000
